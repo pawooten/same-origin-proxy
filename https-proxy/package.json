@@ -1,0 +1,16 @@
+{
+  "name": "https-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx watch server.ts"
+  },
+  "author": "Paul Wooten",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "http-proxy-middleware": "^3.0.5",
+    "tsx": "^4.19.4"
+  }
+}
