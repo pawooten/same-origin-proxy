@@ -5,13 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx watch server.ts"
+    "start": "tsx watch server.ts",
+    "start-doc": "tsx watch doc-server.ts"
   },
   "author": "Paul Wooten",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "http-proxy-middleware": "^3.0.5",
     "tsx": "^4.19.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/http-proxy-middleware": "^0.19.3"
   }
 }
