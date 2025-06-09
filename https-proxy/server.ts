@@ -14,8 +14,12 @@ const app = express();
 const middlewareOptions = {
     router: (req: any) => {
         console.log(`Request URL: ${req.url}`);
-        return 'https://github.com/pawooten';
+        if (req.url && req.url.startsWith('/PatientWindowDev')) {
+            return 'http://hyl-cpql6j3';
+        }
+        return 'https://localhost:4000';
     },
+    secure: false, // disable certificate verification since self-signed certificates are used
     logger: console,
     changeOrigin: true,
 };
