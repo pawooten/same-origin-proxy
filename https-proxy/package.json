@@ -2,11 +2,9 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "https-proxy",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx watch src/server.ts",
-    "start-doc": "tsx watch doc-server.ts"
+    "start": "tsx watch src/server.ts"
   },
   "author": "Paul Wooten",
   "license": "ISC",
