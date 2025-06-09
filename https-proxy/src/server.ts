@@ -2,7 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import https from 'https';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import configuredOptions from './options.json';
+import configuredOptions from '../options.json';
 import { defaultOptions } from './defaultOptions';
 
 const options = { ...defaultOptions, ...configuredOptions };
