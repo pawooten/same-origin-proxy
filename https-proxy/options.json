@@ -1,0 +1,14 @@
+{
+    "https": {
+        "key": "C:\\certificates\\localhost.key",
+        "cert": "C:\\certificates\\localhost.crt"
+    },
+    "port": 3001,
+    "secure": false,
+    "changeOrigin": true,
+    "target": {
+        "match": "/PatientWindowDev",
+        "url": "http://hyl-cpql6j3"
+    },
+    "emrUrl": "https://localhost:4000"
+}

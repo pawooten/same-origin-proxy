@@ -2,32 +2,28 @@ import express from 'express';
 import fs from 'fs';
 import https from 'https';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import configuredOptions from './options.json';
+import { defaultOptions } from './defaultOptions';
 
-const httpsOptions = {
-    key: fs.readFileSync("C:\\certificates\\localhost.key"),
-    cert: fs.readFileSync("C:\\certificates\\localhost.crt"),
-};
+const options = { ...defaultOptions, ...configuredOptions };
+const httpsOptions = { "key": fs.readFileSync(configuredOptions.https.key), "cert": fs.readFileSync(configuredOptions.https.cert) };
 
-const port = 3001;
 const app = express();
-
 const middlewareOptions = {
     router: (req: any) => {
         console.log(`Request URL: ${req.url}`);
-        if (req.url && req.url.startsWith('/PatientWindowDev')) {
-            return 'http://hyl-cpql6j3';
+        if (req.url && req.url.startsWith(options.target.match)) {
+            return options.target.url;
         }
-        return 'https://localhost:4000';
+        return options.emrUrl;
     },
-    secure: false, // disable certificate verification since self-signed certificates are used
+    secure: options.secure,
     logger: console,
-    changeOrigin: true,
+    changeOrigin: options.changeOrigin
 };
 
-const proxy = createProxyMiddleware(middlewareOptions);
-app.use(proxy);
-
+app.use(createProxyMiddleware(middlewareOptions));
 const server = https.createServer(httpsOptions, app);
-server.listen(port, () => {
-    console.log(`HTTPS Server listening on port ${port}`);
+server.listen(options.port, () => {
+    console.log(`Same Origin HTTPS Proxy listening on port ${options.port}`);
 });
